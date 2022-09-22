@@ -1,2 +1,2 @@
 # rock-paper-scissors
-Game rock papper scissors
+Game rock paper scissors
