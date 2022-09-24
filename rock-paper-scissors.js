@@ -11,10 +11,26 @@
         }  else if (randomPcChoice === 2) {
             return 'Paper';
         } else if (randomPcChoice === 3) {
-            return 'Scissors'
-        }      
+            return 'Scissors';   
+        }   /* make console.log display either Rock Paper or Scissors */   
     }
     console.log(getComputerChoice()); 
+
+    function playRound(playerSelection, computerSelection) {
+
+                
+        if (computerSelection == 'Paper') {
+            return "You Lose! Paper beats Rock";
+        } else if (computerSelection == 'Scissors') {
+            return "You Win! Rock beats Scissors";
+        } else if (computerSelection == 'Rock') {
+            return "It's a tie!";
+        }
+    }
+
+    const playerSelection = "rock";
+    const computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
 
    
 
