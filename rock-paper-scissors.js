@@ -14,7 +14,7 @@
             return 'Scissors';   
         }   /* make console.log display either Rock Paper or Scissors */   
     }
-    console.log(getComputerChoice()); 
+    console.log(getComputerChoice()); /*console.logs either Rock Paper or Scissors from getComputerChoice function*/
 
     function playRound(playerSelection, computerSelection) {
 
@@ -30,7 +30,8 @@
 
     const playerSelection = "rock";
     const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+    console.log (computerSelection); /* console.logs either Rock Paper or Scissors from playRound function*/
+    console.log(playRound(playerSelection, computerSelection)); /* console.logs the playRound function */
 
    
 
