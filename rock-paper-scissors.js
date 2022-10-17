@@ -53,8 +53,9 @@
         for (let i = 0; i < 5; i++) {
             const playerSelection = prompt("Choose either Rock, Paper or Scissors", 'Rock, Paper, Scissors').toLowerCase();/*makes text case insensitive?*/
             const computerSelection = getComputerChoice();
-            playRound(playerSelection, computerSelection); /* console.logs the playRound function */ 
-            console.log('1', playerSelection, '2', computerSelection); /* -  to see what player 1 and computer 2 chose*/
+            playRound(playerSelection, computerSelection); 
+            console.log('1', playerSelection, '2', computerSelection);/*  -  to see what player 1 and computer 2 chose*/
+            console.log(playRound(playerSelection,computerSelection));/* - to display the winner of one round*/
          }
              if (playerScore > compScore) {
                 return 'You rock! You beat a computer!'
