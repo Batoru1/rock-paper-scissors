@@ -3,8 +3,8 @@
 
     function getComputerChoice() {
         const pcOptions = ['rock', 'paper', 'scissors']; /* answers to pick from*/
-        const randomNum = Math.floor(Math.random() * pcOptions.length); /*randomize pc choice to 0, 1, 2, (could be 3 instead of .length*/
-        return pcOptions[randomNum]; /* assigns 0, 1, or 2 to 'rock', 'paper' or 'scissors'*/
+        const randomNum = Math.floor(Math.random() * pcOptions.length); /*randomize pc choice to  1,2,3 (could be 3 instead of .length*/
+        return pcOptions[randomNum]; /* assigns  1,2,3 to 'rock', 'paper' or 'scissors'*/
         
      }
 
@@ -14,7 +14,7 @@
     function playRound(playerSelection, computerSelection) { /* plays one round of rps*/
 
         if (playerSelection === computerSelection) {
-            return `it's a tie! You both chose ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)}`; /*template literal's tag function(it could be ${computerSelection} as well + first letter always to upper case*/
+            return `it's a tie! You both chose ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)}`; /*template literal's tag function(it could be ${computerSelection} as well + first letter always to upper case using .slice*/
 
          
         } else if (playerSelection === 'rock' && computerSelection === 'scissors') { /* playerScore++ === playerScore=playerScore+1*/
@@ -37,11 +37,8 @@
          } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
             compScore++;
             return 'You lose! Scissors beats Paper';
-
-        } else  { 
+         }
         
-            return "TYPO - choose wisely!";
-        }
         }
 
          
@@ -65,6 +62,8 @@
              } else  {
                 return 'You both rock! It\'s a tie'
              } 
+
+                       
     }
 
     
