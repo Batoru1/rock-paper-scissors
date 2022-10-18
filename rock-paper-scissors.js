@@ -60,7 +60,7 @@
              } else if (playerScore<compScore) {
                 return 'You lose! But you still rock!'
              } else  {
-                return 'You both rock! It\'s a tie'
+                return 'You both rock! It\'s a tie'/*backslash to escape from ending a string*/
              } 
 
                        
