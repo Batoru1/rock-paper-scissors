@@ -48,7 +48,7 @@
         let compScore = 0;/* for keeping score in game(), let so the score can change */
         
         function game() {
-        for (let i = 0; i < 5; i++) { /*to play 5 rounds*/
+        for (let i = 0; i < 5; i++) { /*to play 5 rounds- for loop*/
             const playerSelection = prompt("Choose either Rock, Paper or Scissors", 'Rock, Paper, Scissors').toLowerCase();/*makes text case insensitive?*/
             const computerSelection = getComputerChoice();
             playRound(playerSelection, computerSelection); 
