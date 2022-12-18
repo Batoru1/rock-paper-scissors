@@ -1,5 +1,10 @@
 
    
+const rockButton = document.querySelector('.rock')
+const paperButton = document.querySelector('paper')
+const scissorsButton = document.querySelector('scissors')
+
+
 
     function getComputerChoice() {
         const pcOptions = ['rock', 'paper', 'scissors']; /* answers to pick from*/
@@ -41,33 +46,37 @@
         
         }
 
-         
+        rockButton.addEventListener('click', () => {
+         const computerSelection = getComputerChoice()
+         const playerSelection = 'rock'
+         playRound (playerSelection,computerSelection)
+      })
         
 
         let playerScore = 0;
         let compScore = 0;/* for keeping score in game(), let so the score can change */
         
-        function game() {
-        for (let i = 0; i < 5; i++) { /*to play 5 rounds- for loop*/
-            const playerSelection = prompt("Choose either Rock, Paper or Scissors", 'Rock, Paper, Scissors').toLowerCase();/*makes text case insensitive?*/
-            const computerSelection = getComputerChoice();
-            playRound(playerSelection, computerSelection); 
-            console.log('1', playerSelection, '2', computerSelection);/*  -  to see what player 1 and computer 2 chose*/
-            console.log(playRound(playerSelection,computerSelection));/* - to display the winner of one round*/
-         }
-             if (playerScore > compScore) {
+        //function game() {
+        //for (let i = 0; i < 5; i++) { /*to play 5 rounds- for loop*/
+           // const playerSelection = prompt("Choose either Rock, Paper or Scissors", 'Rock, Paper, Scissors').toLowerCase();/*makes text case insensitive?*/
+            //const computerSelection = getComputerChoice();
+           // playRound(playerSelection, computerSelection); 
+            //console.log('1', playerSelection, '2', computerSelection);/*  -  to see what player 1 and computer 2 chose*/
+            //console.log(playRound(playerSelection,computerSelection));/* - to display the winner of one round*/
+        // } 
+            // if (playerScore > compScore) {
                 return 'You rock! You beat a computer!'
-             } else if (playerScore<compScore) {
+           //  } else if (playerScore<compScore) {
                 return 'You lose! But you still rock!'
-             } else  {
+            // } else  {
                 return 'You both rock! It\'s a tie'/*backslash to escape from ending a string*/
-             } 
+           //  } 
 
                        
-    }
+    //}
 
     
-    console.log(game())
+    //console.log(game())
 
  
     
