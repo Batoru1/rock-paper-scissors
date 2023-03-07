@@ -14,28 +14,43 @@ function playRound(playerSelection, computerSelection) {
   /* plays one round of rps*/
 
   if (playerSelection === computerSelection) {
-    return `it's a tie! You both chose ${
+    const p = document.createElement("p");
+    // p.classList.add(""); for styling?
+    p.innerText = `it's a tie! You both chose ${
       playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
     }`; /*template literal's tag function(it could be ${computerSelection} as well + first letter always to upper case using .slice*/
+    resultsDiv.appendChild(p);
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
     /* playerScore++ === playerScore=playerScore+1*/
     playerScore++;
-    return "You win! Rock beats Scissors";
+    const p = document.createElement("p");
+    p.innerText = "You win! Rock beats Scissors";
+    resultsDiv.appendChild(p);
   } else if (playerSelection === "paper" && computerSelection === "rock") {
     playerScore++;
-    return "You win! Paper beats Rock";
+    const p = document.createElement("p");
+    p.innerText = "You win! Paper beats Rock";
+    resultsDiv.appendChild(p);
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
     playerScore++;
-    return "You win! Scissors beats Paper";
+    const p = document.createElement("p");
+    p.innerText = "You win! Scissors beats Paper";
+    resultsDiv.appendChild(p);
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
     compScore++;
-    return "You lose! Rock beats Scissors";
+    const p = document.createElement("p");
+    p.innerText = "You lose! Rock beats Scissors";
+    resultsDiv.appendChild(p);
   } else if (playerSelection === "rock" && computerSelection === "paper") {
     compScore++;
-    return "You lose! Paper beats Rock";
+    const p = document.createElement("p");
+    p.innerText = "You lose! Paper beats Rock";
+    resultsDiv.appendChild(p);
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
     compScore++;
-    return "You lose! Scissors beats Paper";
+    const p = document.createElement("p");
+    p.innerText = "You lose! Scissors beats Paper";
+    resultsDiv.appendChild(p);
   }
 }
 
@@ -50,23 +65,22 @@ const scissorsBtn = document.querySelector("#scissors");
 rockBtn.addEventListener("click", function () {
   const computerSelection = getComputerChoice();
   const playerSelection = "rock";
-  console.log(playerSelection);
-  console.log(computerSelection);
+  playRound(playerSelection, computerSelection);
 });
 
 paperBtn.addEventListener("click", function () {
   const computerSelection = getComputerChoice();
   const playerSelection = "paper";
-  console.log(playerSelection);
-  console.log(computerSelection);
+  playRound(playerSelection, computerSelection);
 });
 
 scissorsBtn.addEventListener("click", function () {
   const computerSelection = getComputerChoice();
   const playerSelection = "scissors";
-  console.log(playerSelection);
-  console.log(computerSelection);
+  playRound(playerSelection, computerSelection);
 });
+
+const resultsDiv = document.querySelector(".results");
 
 // function game() {
 //   for (let i = 0; i < 5; i++) {
