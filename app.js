@@ -15,10 +15,10 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerSelection === computerSelection) {
     const p = document.createElement("p");
-    // p.classList.add(""); for styling?
+    // p.classList.add(""); for styling later?
     p.innerText = `it's a tie! You both chose ${
       playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-    }`; /*template literal's tag function(it could be ${computerSelection} as well + first letter always to upper case using .slice*/
+    }`;
     resultsDiv.appendChild(p);
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
     /* playerScore++ === playerScore=playerScore+1*/
@@ -61,6 +61,10 @@ let compScore = 0; /* for keeping score in game(), let so the score can change *
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
+
+const checkForWinner= function(playerScore,compScore){
+  if
+}
 
 rockBtn.addEventListener("click", function () {
   const computerSelection = getComputerChoice();
