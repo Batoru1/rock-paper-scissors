@@ -8,3 +8,6 @@ While coding rps I learned about Math.floor, Math.random, .lenght, template lite
 Quite happy about this
 
 2023-03-03 Had a long brake, js was to hard for me, luckily found CodingAddict on Youtube and will try to REVISIT RPS from the DOM now.
+
+Some comments that won't let me see code clearly:
+/_template literal's tag function(it could be ${computerSelection} as well + first letter always to upper case using .slice_/ ~21
