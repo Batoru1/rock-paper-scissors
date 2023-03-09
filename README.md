@@ -11,3 +11,5 @@ Quite happy about this
 
 Some comments that won't let me see code clearly:
 /_template literal's tag function(it could be ${computerSelection} as well + first letter always to upper case using .slice_/ ~21
+
+Displayed winner of game, but count keeps getting above 5?need fix, as well as declare running score

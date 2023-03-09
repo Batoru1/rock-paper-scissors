@@ -61,30 +61,44 @@ let compScore = 0; /* for keeping score in game(), let so the score can change *
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
+const resultsDiv = document.querySelector(".results");
 
-const checkForWinner= function(playerScore,compScore){
-  if
-}
+const checkForWiner = function (playerScore, compScore) {
+  console.log("1", playerScore, "2", compScore);
+  if (playerScore === 5) {
+    const h2 = document.createElement("h2");
+    h2.classList.add("player-won");
+    h2.innerText = `You won ${playerScore} to ${compScore} great job beating the computer!`;
+    resultsDiv.append(h2);
+  }
+  if (compScore === 5) {
+    const h2 = document.createElement("h2");
+    h2.classList.add("computer-won");
+    h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time`;
+    resultsDiv.append(h2);
+  }
+};
 
 rockBtn.addEventListener("click", function () {
   const computerSelection = getComputerChoice();
   const playerSelection = "rock";
   playRound(playerSelection, computerSelection);
+  checkForWiner(playerScore, compScore);
 });
 
 paperBtn.addEventListener("click", function () {
   const computerSelection = getComputerChoice();
   const playerSelection = "paper";
   playRound(playerSelection, computerSelection);
+  checkForWiner(playerScore, compScore);
 });
 
 scissorsBtn.addEventListener("click", function () {
   const computerSelection = getComputerChoice();
   const playerSelection = "scissors";
   playRound(playerSelection, computerSelection);
+  checkForWiner(playerScore, compScore);
 });
-
-const resultsDiv = document.querySelector(".results");
 
 // function game() {
 //   for (let i = 0; i < 5; i++) {
