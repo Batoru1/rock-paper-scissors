@@ -56,7 +56,6 @@ function playRound(playerSelection, computerSelection) {
 
 let playerScore = 0;
 let compScore = 0; /* for keeping score in game(), let so the score can change */
-let gamesPlayed = 0;
 
 /* three buttons that call playRound function with the correct playerSelection every time a button is clicked.*/
 const rockBtn = document.querySelector("#rock");
