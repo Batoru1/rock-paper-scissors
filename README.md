@@ -18,3 +18,4 @@ Declared running score
 
 Count and running score need not be infinite!!!
 Count and running score need to disappear after each declaration!!!
+Will come back to this after refresh HTML CSS and do some simpler JS projects
