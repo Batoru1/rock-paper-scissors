@@ -62,17 +62,16 @@ const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 const resultsDiv = document.querySelector(".results");
-const playerScoreSpan = document.querySelector(".player-score");
-const computerScoreSpan = document.querySelector(".comp-score");
 
-function runningScore(playerScore, compScore) {
-  const h3 = document.createElement("h3");
-  h3.innerText = `Your score is ${playerScore} `;
-  player - score.appendChild(h3);
-  const h2 = document.createElement("h3");
-  h3.innerText = `Computer Score score is ${compScore} `;
-  comp - score.appendChild(h2);
-}
+const runningScore = function (playerScore, compScore) {
+  const p = document.createElement("p");
+  p.innerText = `Your points: ${playerScore}`;
+  resultsDiv.append(p);
+
+  const p2 = document.createElement("p");
+  p2.innerText = `Computer points: ${compScore}`;
+  resultsDiv.append(p2);
+};
 
 const checkForWiner = function (playerScore, compScore) {
   if (playerScore === 5) {
@@ -94,6 +93,7 @@ rockBtn.addEventListener("click", function () {
   const playerSelection = "rock";
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
+  runningScore(playerScore, compScore);
 });
 
 paperBtn.addEventListener("click", function () {
@@ -101,6 +101,7 @@ paperBtn.addEventListener("click", function () {
   const playerSelection = "paper";
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
+  runningScore(playerScore, compScore);
 });
 
 scissorsBtn.addEventListener("click", function () {
@@ -108,6 +109,7 @@ scissorsBtn.addEventListener("click", function () {
   const playerSelection = "scissors";
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
+  runningScore(playerScore, compScore);
 });
 
 // function game() {
