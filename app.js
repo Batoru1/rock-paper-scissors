@@ -56,6 +56,7 @@ function playRound(playerSelection, computerSelection) {
 
 let playerScore = 0;
 let compScore = 0; /* for keeping score in game(), let so the score can change */
+let gamesPlayed = 0;
 
 /* three buttons that call playRound function with the correct playerSelection every time a button is clicked.*/
 const rockBtn = document.querySelector("#rock");
@@ -74,17 +75,18 @@ const runningScore = function (playerScore, compScore) {
 };
 
 const checkForWiner = function (playerScore, compScore) {
-  if (playerScore === 5) {
-    const h2 = document.createElement("h2");
-    h2.classList.add("player-won");
-    h2.innerText = `You won ${playerScore} to ${compScore} great job beating the computer!`;
-    resultsDiv.append(h2);
-  }
-  if (compScore === 5) {
-    const h2 = document.createElement("h2");
-    h2.classList.add("computer-won");
-    h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time`;
-    resultsDiv.append(h2);
+  if (playerScore === 5 || compScore === 5) {
+    if (playerScore > compScore) {
+      const h2 = document.createElement("h2");
+      h2.classList.add("player-won");
+      h2.innerText = `You won ${playerScore} to ${compScore} great job beating the computer!`;
+      resultsDiv.append(h2);
+    } else if (compScore > playerScore) {
+      const h2 = document.createElement("h2");
+      h2.classList.add("computer-won");
+      h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time`;
+      resultsDiv.append(h2);
+    }
   }
 };
 
