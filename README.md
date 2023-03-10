@@ -14,4 +14,7 @@ Some comments that won't let me see code clearly:
 
 Displayed winner of game, but count keeps getting above 5?need fix, as well as declare running score
 
-Declared running score,
+Declared running score
+
+Count and running score need not be infinite!!!
+Count and running score need to disappear after each declaration!!!
