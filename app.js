@@ -1,5 +1,5 @@
 function getComputerChoice() {
-  const pcOptions = ["rock", "paper", "scissors"]; /* answers to pick from*/
+  const pcOptions = ['rock', 'paper', 'scissors']; /* answers to pick from*/
   const randomNum = Math.floor(
     Math.random() * pcOptions.length
   ); /*randomize pc choice to  1,2,3 (could be 3 instead of .length*/
@@ -14,43 +14,65 @@ function playRound(playerSelection, computerSelection) {
   /* plays one round of rps*/
 
   if (playerSelection === computerSelection) {
-    const p = document.createElement("p");
+    const p = document.createElement('p');
     // p.classList.add(""); for styling later?
     p.innerText = `it's a tie! You both chose ${
       playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
     }`;
     resultsDiv.appendChild(p);
-  } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    /* playerScore++ === playerScore=playerScore+1*/
+    return 'tie';
+    // } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+    //   /* playerScore++ === playerScore=playerScore+1*/
+    //   playerScore++;
+    //   const p = document.createElement('p');
+    //   p.innerText = 'You win! Rock beats Scissors';
+    //   resultsDiv.appendChild(p);
+    // } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+    //   playerScore++;
+    //   const p = document.createElement('p');
+    //   p.innerText = 'You win! Paper beats Rock';
+    //   resultsDiv.appendChild(p);
+    // } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+    //   playerScore++;
+    //   const p = document.createElement('p');
+    //   p.innerText = 'You win! Scissors beats Paper';
+    //   resultsDiv.appendChild(p);
+  } else if (
+    (playerSelection === 'rock' && computerSelection === 'scissors') ||
+    (playerSelection === 'paper' && computerSelection === 'rock') ||
+    (playerSelection === 'scissors' && computerSelection === 'paper')
+  ) {
     playerScore++;
-    const p = document.createElement("p");
-    p.innerText = "You win! Rock beats Scissors";
+    const p = document.createElement('p');
+    p.innerText = `You win! ${
+      playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+    } beats ${computerSelection}`;
     resultsDiv.appendChild(p);
-  } else if (playerSelection === "paper" && computerSelection === "rock") {
-    playerScore++;
-    const p = document.createElement("p");
-    p.innerText = "You win! Paper beats Rock";
-    resultsDiv.appendChild(p);
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    playerScore++;
-    const p = document.createElement("p");
-    p.innerText = "You win! Scissors beats Paper";
-    resultsDiv.appendChild(p);
-  } else if (playerSelection === "scissors" && computerSelection === "rock") {
+    return 'player';
+    // } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+    //   compScore++;
+    //   const p = document.createElement('p');
+    //   p.innerText = 'You lose! Rock beats Scissors';
+    //   resultsDiv.appendChild(p);
+    // } else if (playerSelection === 'rock' && computerSelection === 'paper') {
+    //   compScore++;
+    //   const p = document.createElement('p');
+    //   p.innerText = 'You lose! Paper beats Rock';
+    //   resultsDiv.appendChild(p);
+    // } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+    //   compScore++;
+    //   const p = document.createElement('p');
+    //   p.innerText = 'You lose! Scissors beats Paper';
+    //   resultsDiv.appendChild(p);
+    // }
+  } else {
     compScore++;
-    const p = document.createElement("p");
-    p.innerText = "You lose! Rock beats Scissors";
+    const p = document.createElement('p');
+    p.innerText = `You lose! ${
+      computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
+    } beats ${playerSelection}`;
     resultsDiv.appendChild(p);
-  } else if (playerSelection === "rock" && computerSelection === "paper") {
-    compScore++;
-    const p = document.createElement("p");
-    p.innerText = "You lose! Paper beats Rock";
-    resultsDiv.appendChild(p);
-  } else if (playerSelection === "paper" && computerSelection === "scissors") {
-    compScore++;
-    const p = document.createElement("p");
-    p.innerText = "You lose! Scissors beats Paper";
-    resultsDiv.appendChild(p);
+    return 'computer';
   }
 }
 
@@ -58,17 +80,17 @@ let playerScore = 0;
 let compScore = 0; /* for keeping score in game(), let so the score can change */
 
 /* three buttons that call playRound function with the correct playerSelection every time a button is clicked.*/
-const rockBtn = document.querySelector("#rock");
-const paperBtn = document.querySelector("#paper");
-const scissorsBtn = document.querySelector("#scissors");
-const resultsDiv = document.querySelector(".results");
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+const resultsDiv = document.querySelector('.results');
 
 const runningScore = function (playerScore, compScore) {
-  const p = document.createElement("p");
+  const p = document.createElement('p');
   p.innerText = `Your points: ${playerScore}`;
   resultsDiv.append(p);
 
-  const p2 = document.createElement("p");
+  const p2 = document.createElement('p');
   p2.innerText = `Computer points: ${compScore}`;
   resultsDiv.append(p2);
 };
@@ -76,38 +98,38 @@ const runningScore = function (playerScore, compScore) {
 const checkForWiner = function (playerScore, compScore) {
   if (playerScore === 5 || compScore === 5) {
     if (playerScore > compScore) {
-      const h2 = document.createElement("h2");
-      h2.classList.add("player-won");
+      const h2 = document.createElement('h2');
+      h2.classList.add('player-won');
       h2.innerText = `You won ${playerScore} to ${compScore} great job beating the computer!`;
       resultsDiv.append(h2);
     } else if (compScore > playerScore) {
-      const h2 = document.createElement("h2");
-      h2.classList.add("computer-won");
+      const h2 = document.createElement('h2');
+      h2.classList.add('computer-won');
       h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time`;
       resultsDiv.append(h2);
     }
   }
 };
 
-rockBtn.addEventListener("click", function () {
+rockBtn.addEventListener('click', function () {
   const computerSelection = getComputerChoice();
-  const playerSelection = "rock";
+  const playerSelection = 'rock';
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
 });
 
-paperBtn.addEventListener("click", function () {
+paperBtn.addEventListener('click', function () {
   const computerSelection = getComputerChoice();
-  const playerSelection = "paper";
+  const playerSelection = 'paper';
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
 });
 
-scissorsBtn.addEventListener("click", function () {
+scissorsBtn.addEventListener('click', function () {
   const computerSelection = getComputerChoice();
-  const playerSelection = "scissors";
+  const playerSelection = 'scissors';
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
