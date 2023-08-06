@@ -1,18 +1,18 @@
+//variables
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+const resultsDiv = document.querySelector('.results');
+const rematchBtn = document.querySelector('#rematch');
+
+//randomize pc choice
 function getComputerChoice() {
-  const pcOptions = ['rock', 'paper', 'scissors']; /* answers to pick from*/
-  const randomNum = Math.floor(
-    Math.random() * pcOptions.length
-  ); /*randomize pc choice to  1,2,3 (could be 3 instead of .length*/
-  return pcOptions[
-    randomNum
-  ]; /* assigns  1,2,3 to 'rock', 'paper' or 'scissors'*/
+  const pcOptions = ['rock', 'paper', 'scissors'];
+  const randomNum = Math.floor(Math.random() * pcOptions.length);
+  return pcOptions[randomNum];
 }
 
-/*(console.log(getComputerChoice)) - checking getComputerChoice*/
-
+/* plays one round of rps*/
 function playRound(playerSelection, computerSelection) {
-  /* plays one round of rps*/
-
   if (playerSelection === computerSelection) {
     const p = document.createElement('p');
     // p.classList.add(""); for styling later?
@@ -21,22 +21,6 @@ function playRound(playerSelection, computerSelection) {
     }`;
     resultsDiv.appendChild(p);
     return 'tie';
-    // } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-    //   /* playerScore++ === playerScore=playerScore+1*/
-    //   playerScore++;
-    //   const p = document.createElement('p');
-    //   p.innerText = 'You win! Rock beats Scissors';
-    //   resultsDiv.appendChild(p);
-    // } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-    //   playerScore++;
-    //   const p = document.createElement('p');
-    //   p.innerText = 'You win! Paper beats Rock';
-    //   resultsDiv.appendChild(p);
-    // } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-    //   playerScore++;
-    //   const p = document.createElement('p');
-    //   p.innerText = 'You win! Scissors beats Paper';
-    //   resultsDiv.appendChild(p);
   } else if (
     (playerSelection === 'rock' && computerSelection === 'scissors') ||
     (playerSelection === 'paper' && computerSelection === 'rock') ||
@@ -49,22 +33,6 @@ function playRound(playerSelection, computerSelection) {
     } beats ${computerSelection}`;
     resultsDiv.appendChild(p);
     return 'player';
-    // } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-    //   compScore++;
-    //   const p = document.createElement('p');
-    //   p.innerText = 'You lose! Rock beats Scissors';
-    //   resultsDiv.appendChild(p);
-    // } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-    //   compScore++;
-    //   const p = document.createElement('p');
-    //   p.innerText = 'You lose! Paper beats Rock';
-    //   resultsDiv.appendChild(p);
-    // } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-    //   compScore++;
-    //   const p = document.createElement('p');
-    //   p.innerText = 'You lose! Scissors beats Paper';
-    //   resultsDiv.appendChild(p);
-    // }
   } else {
     compScore++;
     const p = document.createElement('p');
@@ -76,15 +44,11 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+/* for keeping score in game(), let so the score can change */
+let compScore = 0;
 let playerScore = 0;
-let compScore = 0; /* for keeping score in game(), let so the score can change */
 
-/* three buttons that call playRound function with the correct playerSelection every time a button is clicked.*/
-const rockBtn = document.querySelector('#rock');
-const paperBtn = document.querySelector('#paper');
-const scissorsBtn = document.querySelector('#scissors');
-const resultsDiv = document.querySelector('.results');
-
+//displaying current score
 const runningScore = function (playerScore, compScore) {
   const p = document.createElement('p');
   p.innerText = `Your points: ${playerScore}`;
@@ -95,6 +59,7 @@ const runningScore = function (playerScore, compScore) {
   resultsDiv.append(p2);
 };
 
+//declaring the winner
 const checkForWiner = function (playerScore, compScore) {
   if (playerScore === 5 || compScore === 5) {
     if (playerScore > compScore) {
@@ -108,9 +73,15 @@ const checkForWiner = function (playerScore, compScore) {
       h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time`;
       resultsDiv.append(h2);
     }
+    //Disable buttons after the game is finished(enable rematch)
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
+    rematchBtn.disabled = false;
   }
 };
 
+//creating event for rps buttons
 rockBtn.addEventListener('click', function () {
   const computerSelection = getComputerChoice();
   const playerSelection = 'rock';
@@ -135,6 +106,22 @@ scissorsBtn.addEventListener('click', function () {
   runningScore(playerScore, compScore);
 });
 
+// Function to reset the game for a rematch
+const resetGame = function () {
+  playerScore = 0;
+  compScore = 0;
+  rockBtn.disabled = false;
+  paperBtn.disabled = false;
+  scissorsBtn.disabled = false;
+  rematchBtn.disabled = true;
+  // Clear previous results
+  resultsDiv.innerHTML = '';
+};
+
+//event for resteBtn
+rematchBtn.addEventListener('click', resetGame);
+
+//ORIGINAL CODE
 // function game() {
 //   for (let i = 0; i < 5; i++) {
 //     /*to play 5 rounds- for loop*/
