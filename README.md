@@ -16,6 +16,4 @@ Displayed winner of game, but count keeps getting above 5?need fix, as well as d
 
 Declared running score
 
-Count and running score need not be infinite!!!
-Count and running score need to disappear after each declaration!!!
-Will come back to this after refresh HTML CSS and do some simpler JS projects
+Background by - Image by <a href="https://pixabay.com/users/chrisfiedler-935884/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1074131">ChrisFiedler</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1074131">Pixabay</a>
