@@ -1,0 +1,20 @@
+body {
+  background-image: url(./images/background.jpg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* hide rematch btn */
+.hidden {
+  display: none;
+}
+
+/* position rematch on top of others */
+#rematch {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
