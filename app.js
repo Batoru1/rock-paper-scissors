@@ -75,10 +75,11 @@ const checkForWiner = function (playerScore, compScore) {
       resultsDiv.append(h2);
     }
     //Disable buttons after the game is finished(enable rematch)
-    rockBtn.disabled = true;
-    paperBtn.disabled = true;
-    scissorsBtn.disabled = true;
-    rematchBtn.disabled = false;
+
+    rockBtn.style.display = 'none';
+    paperBtn.style.display = 'none'; //hide game Btns
+    scissorsBtn.style.display = 'none';
+    rematchBtn.style.display = 'block'; // Show the rematch button
   }
 };
 
@@ -111,15 +112,17 @@ scissorsBtn.addEventListener('click', function () {
 const resetGame = function () {
   playerScore = 0;
   compScore = 0;
-  rockBtn.disabled = false;
-  paperBtn.disabled = false;
-  scissorsBtn.disabled = false;
-  rematchBtn.disabled = true;
+
+  rockBtn.style.display = 'inline';
+  paperBtn.style.display = 'inline'; //show game btns
+  scissorsBtn.style.display = 'inline';
+  rematchBtn.style.display = 'none'; // Hide the rematch button
+
   // Clear previous results
   resultsDiv.innerHTML = '';
 };
 
-//event for resteBtn
+//event for rematchBtn
 rematchBtn.addEventListener('click', resetGame);
 
 //ORIGINAL CODE
