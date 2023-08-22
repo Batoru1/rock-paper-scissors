@@ -11,10 +11,17 @@ body {
   display: none;
 }
 
-/* position rematch on top of others */
+.results {
+  transform: translate(0%, -60%);
+  text-align: center;
+}
+
+.container {
+  position: fixed;
+}
+
 #rematch {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 55%;
+  left: 45%;
 }
