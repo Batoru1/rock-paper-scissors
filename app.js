@@ -10,16 +10,6 @@ const scoreUpdateContainer = document.querySelector('.score-updates');
 let compScore = 0;
 let playerScore = 0;
 
-// Create a container for round results
-// const roundResultsContainer = document.createElement('div');
-// resultsDiv.appendChild(roundResultsContainer);
-
-// Create a container for score updates
-// const scoreUpdateContainer = document.createElement('div');
-// resultsDiv.appendChild(scoreUpdateContainer);
-
-// console.log(scoreUpdateContainer);
-
 //randomize pc choice
 function getComputerChoice() {
   const pcOptions = ['rock', 'paper', 'scissors'];
@@ -82,6 +72,11 @@ const runningScore = function (playerScore, compScore) {
 
 //declaring the winner
 const checkForWiner = function (playerScore, compScore) {
+  // Clear previous winner declaration
+  while (resultsDiv.firstChild) {
+    resultsDiv.removeChild(resultsDiv.firstChild);
+  }
+
   if (playerScore === 5 || compScore === 5) {
     if (playerScore > compScore) {
       const h2 = document.createElement('h2');
@@ -105,29 +100,35 @@ const checkForWiner = function (playerScore, compScore) {
 
 //creating event for rps buttons
 rockBtn.addEventListener('click', function () {
+  console.log('');
   const computerSelection = getComputerChoice();
   const playerSelection = 'rock';
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
+  console.log('Running score - Player:', playerScore, 'Computer:', compScore);
   // updateScoreDisplay(playerScore, compScore);
 });
 
 paperBtn.addEventListener('click', function () {
+  console.log('');
   const computerSelection = getComputerChoice();
   const playerSelection = 'paper';
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
+  console.log('Running score - Player:', playerScore, 'Computer:', compScore);
   // updateScoreDisplay(playerScore, compScore);
 });
 
 scissorsBtn.addEventListener('click', function () {
+  console.log('');
   const computerSelection = getComputerChoice();
   const playerSelection = 'scissors';
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
+  console.log('Running score - Player:', playerScore, 'Computer:', compScore);
   // updateScoreDisplay(playerScore, compScore);
 });
 
@@ -142,7 +143,12 @@ const resetGame = function () {
   rematchBtn.style.display = 'none'; // Hide the rematch button
 
   // Clear previous results
-  resultsDiv.innerHTML = '';
+  while (roundResultsContainer.firstChild) {
+    roundResultsContainer.removeChild(roundResultsContainer.firstChild);
+  }
+  while (scoreUpdateContainer.firstChild) {
+    scoreUpdateContainer.removeChild(scoreUpdateContainer.firstChild);
+  }
 };
 
 //event for rematchBtn
