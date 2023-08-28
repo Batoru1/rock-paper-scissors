@@ -4,8 +4,9 @@ const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
 const resultsDiv = document.querySelector('.results');
 const rematchBtn = document.querySelector('#rematch');
-const roundResultsContainer = document.querySelector('.round-results');
-const scoreUpdateContainer = document.querySelector('.score-updates');
+// const roundResultsContainer = document.querySelector('.round-results');
+// const scoreUpdateContainer = document.querySelector('.score-updates');
+const runningScoreDisplay = document.querySelector('#running-score');
 
 let compScore = 0;
 let playerScore = 0;
@@ -20,16 +21,16 @@ function getComputerChoice() {
 /* plays one round of rps*/
 function playRound(playerSelection, computerSelection) {
   // Clear previous round results
-  while (roundResultsContainer.firstChild) {
-    roundResultsContainer.removeChild(roundResultsContainer.firstChild);
-  }
+  // while (roundResultsContainer.firstChild) {
+  //   roundResultsContainer.removeChild(roundResultsContainer.firstChild);
+  // }
 
   if (playerSelection === computerSelection) {
-    const p = document.createElement('p');
-    p.innerText = `it's a tie! You both chose ${
-      playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-    }`;
-    roundResultsContainer.appendChild(p);
+    // const p = document.createElement('p');
+    // p.innerText = `it's a tie! You both chose ${
+    //   playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+    // }`;
+    // roundResultsContainer.appendChild(p);
     return 'tie';
   } else if (
     (playerSelection === 'rock' && computerSelection === 'scissors') ||
@@ -37,19 +38,19 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === 'scissors' && computerSelection === 'paper')
   ) {
     playerScore++;
-    const p = document.createElement('p');
-    p.innerText = `You win! ${
-      playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-    } beats ${computerSelection}`;
-    roundResultsContainer.appendChild(p);
+    // const p = document.createElement('p');
+    // p.innerText = `You win! ${
+    //   playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+    // } beats ${computerSelection}`;
+    // roundResultsContainer.appendChild(p);
     return 'player';
   } else {
     compScore++;
-    const p = document.createElement('p');
-    p.innerText = `You lose! ${
-      computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
-    } beats ${playerSelection}`;
-    roundResultsContainer.appendChild(p);
+    // const p = document.createElement('p');
+    // p.innerText = `You lose! ${
+    //   computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
+    // } beats ${playerSelection}`;
+    // roundResultsContainer.appendChild(p);
     return 'computer';
   }
 }
@@ -57,17 +58,20 @@ function playRound(playerSelection, computerSelection) {
 // displaying current score
 const runningScore = function (playerScore, compScore) {
   // Clear previous score updates
-  while (scoreUpdateContainer.firstChild) {
-    scoreUpdateContainer.removeChild(scoreUpdateContainer.firstChild);
-  }
+  // while (scoreUpdateContainer.firstChild) {
+  //   scoreUpdateContainer.removeChild(scoreUpdateContainer.firstChild);
+  // }
 
-  const p = document.createElement('p');
-  p.innerText = `Your points: ${playerScore}`;
-  scoreUpdateContainer.append(p);
+  // const p = document.createElement('p');
+  // p.innerText = `Your points: ${playerScore}`;
+  // scoreUpdateContainer.append(p);
 
-  const p2 = document.createElement('p');
-  p2.innerText = `Computer points: ${compScore}`;
-  scoreUpdateContainer.append(p2);
+  // const p2 = document.createElement('p');
+  // p2.innerText = `Computer points: ${compScore}`;
+  // scoreUpdateContainer.append(p2);
+
+  // Update the running score display on the screen
+  runningScoreDisplay.innerText = `Player Score: ${playerScore}  Computer Score: ${compScore}`;
 };
 
 //declaring the winner
@@ -106,8 +110,7 @@ rockBtn.addEventListener('click', function () {
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
-  console.log('Running score - Player:', playerScore, 'Computer:', compScore);
-  // updateScoreDisplay(playerScore, compScore);
+  runningScoreDisplay.style.display = 'block';
 });
 
 paperBtn.addEventListener('click', function () {
@@ -117,8 +120,7 @@ paperBtn.addEventListener('click', function () {
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
-  console.log('Running score - Player:', playerScore, 'Computer:', compScore);
-  // updateScoreDisplay(playerScore, compScore);
+  runningScoreDisplay.style.display = 'block';
 });
 
 scissorsBtn.addEventListener('click', function () {
@@ -128,8 +130,7 @@ scissorsBtn.addEventListener('click', function () {
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
-  console.log('Running score - Player:', playerScore, 'Computer:', compScore);
-  // updateScoreDisplay(playerScore, compScore);
+  runningScoreDisplay.style.display = 'block';
 });
 
 // Function to reset the game for a rematch
@@ -143,12 +144,17 @@ const resetGame = function () {
   rematchBtn.style.display = 'none'; // Hide the rematch button
 
   // Clear previous results
-  while (roundResultsContainer.firstChild) {
-    roundResultsContainer.removeChild(roundResultsContainer.firstChild);
+  // while (roundResultsContainer.firstChild) {
+  //   roundResultsContainer.removeChild(roundResultsContainer.firstChild);
+  // }
+  // while (scoreUpdateContainer.firstChild) {
+  //   scoreUpdateContainer.removeChild(scoreUpdateContainer.firstChild);
+  // }
+  while (resultsDiv.firstChild) {
+    resultsDiv.removeChild(resultsDiv.firstChild);
   }
-  while (scoreUpdateContainer.firstChild) {
-    scoreUpdateContainer.removeChild(scoreUpdateContainer.firstChild);
-  }
+  // Hide the running score display
+  runningScoreDisplay.style.display = 'none';
 };
 
 //event for rematchBtn
