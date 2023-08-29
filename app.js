@@ -2,11 +2,12 @@
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
-const resultsDiv = document.querySelector('.results');
 const rematchBtn = document.querySelector('#rematch');
-// const roundResultsContainer = document.querySelector('.round-results');
-// const scoreUpdateContainer = document.querySelector('.score-updates');
-const runningScoreDisplay = document.querySelector('#running-score');
+const resultsDiv = document.querySelector('.results');
+const roundResultsSpan = document.querySelector('.round-results');
+const playerPointsSpan = document.querySelector('.player-points');
+const computerPointsSpan = document.querySelector('.computer-points');
+const winnerSpan = document.querySelector('.winner');
 
 let compScore = 0;
 let playerScore = 0;
@@ -20,17 +21,12 @@ function getComputerChoice() {
 
 /* plays one round of rps*/
 function playRound(playerSelection, computerSelection) {
-  // Clear previous round results
-  // while (roundResultsContainer.firstChild) {
-  //   roundResultsContainer.removeChild(roundResultsContainer.firstChild);
-  // }
-
   if (playerSelection === computerSelection) {
-    // const p = document.createElement('p');
-    // p.innerText = `it's a tie! You both chose ${
-    //   playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-    // }`;
-    // roundResultsContainer.appendChild(p);
+    const p = document.createElement('p');
+    p.innerText = `it's a tie! You both chose ${
+      playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+    }`;
+    roundResultsSpan.appendChild(p);
     return 'tie';
   } else if (
     (playerSelection === 'rock' && computerSelection === 'scissors') ||
@@ -38,60 +34,47 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === 'scissors' && computerSelection === 'paper')
   ) {
     playerScore++;
-    // const p = document.createElement('p');
-    // p.innerText = `You win! ${
-    //   playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-    // } beats ${computerSelection}`;
-    // roundResultsContainer.appendChild(p);
+    const p = document.createElement('p');
+    p.innerText = `You win! ${
+      playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+    } beats ${computerSelection}`;
+    roundResultsSpan.appendChild(p);
     return 'player';
   } else {
     compScore++;
-    // const p = document.createElement('p');
-    // p.innerText = `You lose! ${
-    //   computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
-    // } beats ${playerSelection}`;
-    // roundResultsContainer.appendChild(p);
+    const p = document.createElement('p');
+    p.innerText = `You lose! ${
+      computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
+    } beats ${playerSelection}`;
+    roundResultsSpan.appendChild(p);
     return 'computer';
   }
 }
 
 // displaying current score
 const runningScore = function (playerScore, compScore) {
-  // Clear previous score updates
-  // while (scoreUpdateContainer.firstChild) {
-  //   scoreUpdateContainer.removeChild(scoreUpdateContainer.firstChild);
-  // }
+  const p = document.createElement('p');
+  p.innerText = `Your points: ${playerScore}`;
+  playerPointsSpan.append(p);
 
-  // const p = document.createElement('p');
-  // p.innerText = `Your points: ${playerScore}`;
-  // scoreUpdateContainer.append(p);
-
-  // const p2 = document.createElement('p');
-  // p2.innerText = `Computer points: ${compScore}`;
-  // scoreUpdateContainer.append(p2);
-
-  // Update the running score display on the screen
-  runningScoreDisplay.innerText = `Player Score: ${playerScore}  Computer Score: ${compScore}`;
+  const p2 = document.createElement('p');
+  p2.innerText = `Computer points: ${compScore}`;
+  computerPointsSpan.append(p2);
 };
 
 //declaring the winner
 const checkForWiner = function (playerScore, compScore) {
-  // Clear previous winner declaration
-  while (resultsDiv.firstChild) {
-    resultsDiv.removeChild(resultsDiv.firstChild);
-  }
-
   if (playerScore === 5 || compScore === 5) {
     if (playerScore > compScore) {
       const h2 = document.createElement('h2');
       h2.classList.add('player-won');
       h2.innerText = `You won ${playerScore} to ${compScore} great job beating the computer!`;
-      resultsDiv.append(h2);
+      winnerSpan.append(h2);
     } else if (compScore > playerScore) {
       const h2 = document.createElement('h2');
       h2.classList.add('computer-won');
       h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time`;
-      resultsDiv.append(h2);
+      winnerSpan.append(h2);
     }
     //Disable buttons after the game is finished(enable rematch)
 
@@ -110,7 +93,6 @@ rockBtn.addEventListener('click', function () {
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
-  runningScoreDisplay.style.display = 'block';
 });
 
 paperBtn.addEventListener('click', function () {
@@ -120,7 +102,6 @@ paperBtn.addEventListener('click', function () {
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
-  runningScoreDisplay.style.display = 'block';
 });
 
 scissorsBtn.addEventListener('click', function () {
@@ -130,7 +111,6 @@ scissorsBtn.addEventListener('click', function () {
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
-  runningScoreDisplay.style.display = 'block';
 });
 
 // Function to reset the game for a rematch
@@ -142,19 +122,6 @@ const resetGame = function () {
   paperBtn.style.display = 'inline'; //show game btns
   scissorsBtn.style.display = 'inline';
   rematchBtn.style.display = 'none'; // Hide the rematch button
-
-  // Clear previous results
-  // while (roundResultsContainer.firstChild) {
-  //   roundResultsContainer.removeChild(roundResultsContainer.firstChild);
-  // }
-  // while (scoreUpdateContainer.firstChild) {
-  //   scoreUpdateContainer.removeChild(scoreUpdateContainer.firstChild);
-  // }
-  while (resultsDiv.firstChild) {
-    resultsDiv.removeChild(resultsDiv.firstChild);
-  }
-  // Hide the running score display
-  runningScoreDisplay.style.display = 'none';
 };
 
 //event for rematchBtn
@@ -192,44 +159,3 @@ rematchBtn.addEventListener('click', resetGame);
 // console.log(game());
 
 //ORIGINAL CODE 2
-
-// function playRound(playerSelection, computerSelection) {
-//   if (playerSelection === computerSelection) {
-//     const p = document.createElement('p');
-//     p.innerText = `it's a tie! You both chose ${
-//       playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-//     }`;
-//     resultsDiv.appendChild(p);
-//     return 'tie';
-//   } else if (
-//     (playerSelection === 'rock' && computerSelection === 'scissors') ||
-//     (playerSelection === 'paper' && computerSelection === 'rock') ||
-//     (playerSelection === 'scissors' && computerSelection === 'paper')
-//   ) {
-//     playerScore++;
-//     const p = document.createElement('p');
-//     p.innerText = `You win! ${
-//       playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-//     } beats ${computerSelection}`;
-//     resultsDiv.appendChild(p);
-//     return 'player';
-//   } else {
-//     compScore++;
-//     const p = document.createElement('p');
-//     p.innerText = `You lose! ${
-//       computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
-//     } beats ${playerSelection}`;
-//     resultsDiv.appendChild(p);
-//     return 'computer';
-//   }
-// }
-
-// const runningScore = function (playerScore, compScore) {
-//   const p = document.createElement('p');
-//   p.innerText = `Your points: ${playerScore}`;
-//   resultsDiv.append(p);
-
-//   const p2 = document.createElement('p');
-//   p2.innerText = `Computer points: ${compScore}`;
-//   resultsDiv.append(p2);
-// };
