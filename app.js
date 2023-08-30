@@ -4,10 +4,10 @@ const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
 const rematchBtn = document.querySelector('#rematch');
 const resultsDiv = document.querySelector('.results');
-const roundResultsSpan = document.querySelector('.round-results');
-const playerPointsSpan = document.querySelector('.player-points');
-const computerPointsSpan = document.querySelector('.computer-points');
-const winnerSpan = document.querySelector('.winner');
+const roundResultsDiv = document.querySelector('.round-results');
+const playerPointsDiv = document.querySelector('.player-points');
+const computerPointsDiv = document.querySelector('.computer-points');
+const winnerDiv = document.querySelector('.winner');
 
 let compScore = 0;
 let playerScore = 0;
@@ -21,12 +21,16 @@ function getComputerChoice() {
 
 /* plays one round of rps*/
 function playRound(playerSelection, computerSelection) {
+  while (roundResultsDiv.firstChild) {
+    roundResultsDiv.removeChild(roundResultsDiv.firstChild);
+  }
+
   if (playerSelection === computerSelection) {
     const p = document.createElement('p');
     p.innerText = `it's a tie! You both chose ${
       playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
     }`;
-    roundResultsSpan.appendChild(p);
+    roundResultsDiv.appendChild(p);
     return 'tie';
   } else if (
     (playerSelection === 'rock' && computerSelection === 'scissors') ||
@@ -37,44 +41,59 @@ function playRound(playerSelection, computerSelection) {
     const p = document.createElement('p');
     p.innerText = `You win! ${
       playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
-    } beats ${computerSelection}`;
-    roundResultsSpan.appendChild(p);
+    } beats ${
+      computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
+    }`;
+    roundResultsDiv.appendChild(p);
     return 'player';
   } else {
     compScore++;
     const p = document.createElement('p');
     p.innerText = `You lose! ${
       computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)
-    } beats ${playerSelection}`;
-    roundResultsSpan.appendChild(p);
+    } beats ${
+      playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
+    }`;
+    roundResultsDiv.appendChild(p);
     return 'computer';
   }
 }
 
 // displaying current score
 const runningScore = function (playerScore, compScore) {
+  while (playerPointsDiv.firstChild) {
+    playerPointsDiv.removeChild(playerPointsDiv.firstChild);
+  }
+
+  while (computerPointsDiv.firstChild) {
+    computerPointsDiv.removeChild(computerPointsDiv.firstChild);
+  }
+
   const p = document.createElement('p');
   p.innerText = `Your points: ${playerScore}`;
-  playerPointsSpan.append(p);
+  playerPointsDiv.append(p);
 
   const p2 = document.createElement('p');
   p2.innerText = `Computer points: ${compScore}`;
-  computerPointsSpan.append(p2);
+  computerPointsDiv.append(p2);
 };
 
 //declaring the winner
 const checkForWiner = function (playerScore, compScore) {
   if (playerScore === 5 || compScore === 5) {
+    while (winnerDiv.firstChild) {
+      winnerDiv.removeChild(winnerDiv.firstChild);
+    }
     if (playerScore > compScore) {
       const h2 = document.createElement('h2');
       h2.classList.add('player-won');
       h2.innerText = `You won ${playerScore} to ${compScore} great job beating the computer!`;
-      winnerSpan.append(h2);
+      winnerDiv.append(h2);
     } else if (compScore > playerScore) {
       const h2 = document.createElement('h2');
       h2.classList.add('computer-won');
       h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time`;
-      winnerSpan.append(h2);
+      winnerDiv.append(h2);
     }
     //Disable buttons after the game is finished(enable rematch)
 
@@ -87,36 +106,57 @@ const checkForWiner = function (playerScore, compScore) {
 
 //creating event for rps buttons
 rockBtn.addEventListener('click', function () {
-  console.log('');
   const computerSelection = getComputerChoice();
   const playerSelection = 'rock';
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
+
+  // Show hidden elements after a move is made
+  roundResultsDiv.style.display = 'block';
+  playerPointsDiv.style.display = 'block';
+  computerPointsDiv.style.display = 'block';
+  // winnerDiv.style.display = 'block';
 });
 
 paperBtn.addEventListener('click', function () {
-  console.log('');
   const computerSelection = getComputerChoice();
   const playerSelection = 'paper';
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
+
+  // Show hidden elements after a move is made
+  roundResultsDiv.style.display = 'block';
+  playerPointsDiv.style.display = 'block';
+  computerPointsDiv.style.display = 'block';
+  // winnerDiv.style.display = 'block';
 });
 
 scissorsBtn.addEventListener('click', function () {
-  console.log('');
   const computerSelection = getComputerChoice();
   const playerSelection = 'scissors';
   playRound(playerSelection, computerSelection);
   checkForWiner(playerScore, compScore);
   runningScore(playerScore, compScore);
+
+  // Show hidden elements after a move is made
+  roundResultsDiv.style.display = 'block';
+  playerPointsDiv.style.display = 'block';
+  computerPointsDiv.style.display = 'block';
+  // winnerDiv.style.display = 'block';
 });
 
 // Function to reset the game for a rematch
 const resetGame = function () {
   playerScore = 0;
   compScore = 0;
+
+  // Hide elements when resetting the game
+  roundResultsDiv.style.display = 'none';
+  playerPointsDiv.style.display = 'none';
+  computerPointsDiv.style.display = 'none';
+  winnerDiv.style.display = 'none';
 
   rockBtn.style.display = 'inline';
   paperBtn.style.display = 'inline'; //show game btns
