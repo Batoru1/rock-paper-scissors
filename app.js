@@ -21,6 +21,7 @@ function getComputerChoice() {
 
 /* plays one round of rps*/
 function playRound(playerSelection, computerSelection) {
+  //clear out the content of an element  before adding new content
   while (roundResultsDiv.firstChild) {
     roundResultsDiv.removeChild(roundResultsDiv.firstChild);
   }
@@ -61,6 +62,7 @@ function playRound(playerSelection, computerSelection) {
 
 // displaying current score
 const runningScore = function (playerScore, compScore) {
+  //clear out the content of an element  before adding new content
   while (playerPointsDiv.firstChild) {
     playerPointsDiv.removeChild(playerPointsDiv.firstChild);
   }
@@ -81,6 +83,7 @@ const runningScore = function (playerScore, compScore) {
 //declaring the winner
 const checkForWiner = function (playerScore, compScore) {
   if (playerScore === 5 || compScore === 5) {
+    //clear out the content of an element  before adding new content
     while (winnerDiv.firstChild) {
       winnerDiv.removeChild(winnerDiv.firstChild);
     }
@@ -95,12 +98,13 @@ const checkForWiner = function (playerScore, compScore) {
       h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time`;
       winnerDiv.append(h2);
     }
-    //Disable buttons after the game is finished(enable rematch)
+    //Disable buttons after the game is finished(enable rematch, display winnerDiv)
 
     rockBtn.style.display = 'none';
     paperBtn.style.display = 'none'; //hide game Btns
     scissorsBtn.style.display = 'none';
     rematchBtn.style.display = 'block'; // Show the rematch button
+    winnerDiv.style.display = 'block';
   }
 };
 
@@ -116,7 +120,6 @@ rockBtn.addEventListener('click', function () {
   roundResultsDiv.style.display = 'block';
   playerPointsDiv.style.display = 'block';
   computerPointsDiv.style.display = 'block';
-  // winnerDiv.style.display = 'block';
 });
 
 paperBtn.addEventListener('click', function () {
@@ -130,7 +133,6 @@ paperBtn.addEventListener('click', function () {
   roundResultsDiv.style.display = 'block';
   playerPointsDiv.style.display = 'block';
   computerPointsDiv.style.display = 'block';
-  // winnerDiv.style.display = 'block';
 });
 
 scissorsBtn.addEventListener('click', function () {
@@ -144,7 +146,6 @@ scissorsBtn.addEventListener('click', function () {
   roundResultsDiv.style.display = 'block';
   playerPointsDiv.style.display = 'block';
   computerPointsDiv.style.display = 'block';
-  // winnerDiv.style.display = 'block';
 });
 
 // Function to reset the game for a rematch
@@ -156,7 +157,7 @@ const resetGame = function () {
   roundResultsDiv.style.display = 'none';
   playerPointsDiv.style.display = 'none';
   computerPointsDiv.style.display = 'none';
-  winnerDiv.style.display = 'none';
+  winnerDiv.style.display = 'none'; //hide winnerDiv
 
   rockBtn.style.display = 'inline';
   paperBtn.style.display = 'inline'; //show game btns
