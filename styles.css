@@ -16,10 +16,19 @@ body {
   text-align: center;
 }
 
+.round-results {
+  padding-bottom: 150px;
+}
+
 .buttons {
   position: fixed;
   display: flex;
 }
+
+#rock:hover {
+  cursor: pointer;
+}
+
 #rock {
   background: none;
   border: none;
@@ -35,6 +44,18 @@ body {
   border: none;
 }
 
+#rock:hover {
+  cursor: pointer;
+}
+
+#paper:hover {
+  cursor: pointer;
+}
+
+#scissors:hover {
+  cursor: pointer;
+}
+
 #rematch {
   position: fixed;
   top: 55%;
@@ -47,4 +68,6 @@ h1 {
   align-self: flex-start;
   text-transform: capitalize;
   word-spacing: 10vw;
+  margin-top: 40px;
+  position: fixed;
 }
