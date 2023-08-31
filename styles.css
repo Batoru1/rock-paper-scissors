@@ -12,7 +12,9 @@ body {
 }
 
 .results {
-  transform: translate(0%, -60%);
+  display: flex;
+  flex-direction: column;
+  /* transform: translate(0%, -60%); */
   text-align: center;
 }
 
@@ -20,40 +22,52 @@ body {
   padding-bottom: 150px;
 }
 
+.points {
+  display: flex;
+  gap: 5vw;
+  transform: translate(10%, 600%); /*move container to bottom screen*/
+}
+
+.winner {
+  transform: translate(0%, 100%);
+}
+
 .buttons {
   position: fixed;
   display: flex;
 }
 
-#rock:hover {
-  cursor: pointer;
-}
-
 #rock {
   background: none;
   border: none;
+  transition: transform 0.2s;
 }
 
 #paper {
   background: none;
   border: none;
+  transition: transform 0.2s; /*btn transition to bigger btn*/
 }
 
 #scissors {
   background: none;
   border: none;
+  transition: transform 0.2s;
 }
 
 #rock:hover {
   cursor: pointer;
+  transform: scale(1.1); /*btn getting larger*/
 }
 
 #paper:hover {
   cursor: pointer;
+  transform: scale(1.1);
 }
 
 #scissors:hover {
   cursor: pointer;
+  transform: scale(1.1);
 }
 
 #rematch {

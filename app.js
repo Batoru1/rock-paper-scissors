@@ -90,19 +90,19 @@ const checkForWiner = function (playerScore, compScore) {
     if (playerScore > compScore) {
       const h2 = document.createElement('h2');
       h2.classList.add('player-won');
-      h2.innerText = `You won ${playerScore} to ${compScore} great job beating the computer!`;
+      h2.innerText = `You won ${playerScore} to ${compScore}, great job beating the computer!`;
       winnerDiv.append(h2);
     } else if (compScore > playerScore) {
       const h2 = document.createElement('h2');
       h2.classList.add('computer-won');
-      h2.innerText = `You lost ${playerScore} to ${compScore} better luck next time`;
+      h2.innerText = `You lost ${playerScore} to ${compScore}, better luck next time!`;
       winnerDiv.append(h2);
     }
     //Disable buttons after the game is finished(enable rematch, display winnerDiv)
 
-    rockBtn.style.display = 'none';
-    paperBtn.style.display = 'none'; //hide game Btns
-    scissorsBtn.style.display = 'none';
+    // rockBtn.style.display = 'none';
+    // paperBtn.style.display = 'none'; //hide game Btns
+    // scissorsBtn.style.display = 'none';
     rematchBtn.style.display = 'block'; // Show the rematch button
     winnerDiv.style.display = 'block';
   }
