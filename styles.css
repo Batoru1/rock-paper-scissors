@@ -19,17 +19,18 @@ body {
 }
 
 .round-results {
-  padding-bottom: 150px;
+  padding-bottom: 500px;
 }
 
 .points {
+  text-align: center;
   display: flex;
   gap: 5vw;
-  transform: translate(10%, 600%); /*move container to bottom screen*/
+  transform: translate(0%, 200%); /*move container to bottom screen*/
 }
 
 .winner {
-  transform: translate(0%, 100%);
+  transform: translate(0%, -150%);
 }
 
 .buttons {
@@ -71,9 +72,12 @@ body {
 }
 
 #rematch {
-  position: fixed;
-  top: 55%;
-  left: 45%;
+  /* position: fixed; */
+  /* top: 55%;
+  left: 45%; */
+  background: none;
+  border: none;
+  transform: translate(-750%, -70%);
 }
 
 h1 {

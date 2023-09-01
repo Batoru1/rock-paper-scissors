@@ -100,9 +100,9 @@ const checkForWiner = function (playerScore, compScore) {
     }
     //Disable buttons after the game is finished(enable rematch, display winnerDiv)
 
-    // rockBtn.style.display = 'none';
-    // paperBtn.style.display = 'none'; //hide game Btns
-    // scissorsBtn.style.display = 'none';
+    rockBtn.disabled = true; //btns not clickable
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
     rematchBtn.style.display = 'block'; // Show the rematch button
     winnerDiv.style.display = 'block';
   }
@@ -163,6 +163,10 @@ const resetGame = function () {
   paperBtn.style.display = 'inline'; //show game btns
   scissorsBtn.style.display = 'inline';
   rematchBtn.style.display = 'none'; // Hide the rematch button
+
+  rockBtn.disabled = false; //btns clickable
+  paperBtn.disabled = false;
+  scissorsBtn.disabled = false;
 };
 
 //event for rematchBtn
