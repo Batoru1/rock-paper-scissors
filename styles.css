@@ -19,18 +19,33 @@ body {
 }
 
 .round-results {
-  padding-bottom: 500px;
+  padding-bottom: 400px;
+  font-size: larger;
+  color: rgb(21, 152, 106);
 }
 
 .points {
   text-align: center;
   display: flex;
+  justify-content: center;
   gap: 5vw;
   transform: translate(0%, 200%); /*move container to bottom screen*/
 }
 
+.player-points {
+  color: rgb(79, 142, 144);
+  font-size: larger;
+}
+
+.computer-points {
+  color: rgb(137, 22, 22);
+  font-size: larger;
+}
+
 .winner {
-  transform: translate(0%, -150%);
+  transform: translate(0%, -120%);
+  font-size: x-large;
+  color: pink;
 }
 
 .buttons {
@@ -38,16 +53,30 @@ body {
   display: flex;
 }
 
-#rock {
+/*  button styles */
+#rock,
+#paper,
+#scissors {
   background: none;
   border: none;
   transition: transform 0.2s;
 }
 
-#paper {
-  background: none;
-  border: none;
-  transition: transform 0.2s; /*btn transition to bigger btn*/
+/* Button styles when hovered */
+#rock:hover,
+#paper:hover,
+#scissors:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+/*  image size for smaller screens */
+@media (max-width: 768px) {
+  #rock img,
+  #paper img,
+  #scissors img {
+    width: 150px; /* width as needed for smaller screens */
+  }
 }
 
 #scissors {
@@ -55,8 +84,7 @@ body {
   border: none;
   transition: transform 0.2s;
 }
-
-#rock:hover {
+*/ #rock:hover {
   cursor: pointer;
   transform: scale(1.1); /*btn getting larger*/
 }
@@ -72,12 +100,24 @@ body {
 }
 
 #rematch {
-  /* position: fixed; */
-  /* top: 55%;
-  left: 45%; */
-  background: none;
+  position: absolute;
+  top: -20%;
+  left: 42%;
+
+  background: transparent;
   border: none;
-  transform: translate(-750%, -70%);
+
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 1.2em;
+  color: blueviolet;
+}
+
+#rematch:hover {
+  color: rgb(164, 110, 215);
+  transform: scale(1.1);
+  font-weight: bolder;
 }
 
 h1 {
@@ -88,4 +128,9 @@ h1 {
   word-spacing: 10vw;
   margin-top: 40px;
   position: fixed;
+}
+
+.points {
+  display: flex;
+  justify-content: center;
 }
