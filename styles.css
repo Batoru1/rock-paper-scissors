@@ -70,35 +70,6 @@ body {
   transform: scale(1.1);
 }
 
-/*  image size for smaller screens */
-@media (max-width: 768px) {
-  #rock img,
-  #paper img,
-  #scissors img {
-    width: 150px; /* width as needed for smaller screens */
-  }
-}
-
-#scissors {
-  background: none;
-  border: none;
-  transition: transform 0.2s;
-}
-*/ #rock:hover {
-  cursor: pointer;
-  transform: scale(1.1); /*btn getting larger*/
-}
-
-#paper:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
-#scissors:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
 #rematch {
   position: absolute;
   top: -20%;
@@ -133,4 +104,29 @@ h1 {
 .points {
   display: flex;
   justify-content: center;
+}
+
+/*  image size for smaller screens */
+@media (max-width: 768px) {
+  #rock img,
+  #paper img,
+  #scissors img {
+    width: 150px; /* width as needed for smaller screens */
+  }
+
+  h1 {
+    font-size: small;
+  }
+
+  .round-results {
+    font-size: small;
+  }
+
+  .points {
+    font-size: small;
+  }
+
+  .winner {
+    font-size: small;
+  }
 }
