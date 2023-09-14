@@ -115,7 +115,7 @@ h1 {
   }
 
   h1 {
-    font-size: small;
+    font-size: medium;
   }
 
   .round-results {
@@ -123,10 +123,14 @@ h1 {
   }
 
   .points {
-    font-size: small;
+    font-size: medium;
   }
 
   .winner {
     font-size: small;
+  }
+
+  #rematch {
+    left: 35%;
   }
 }
