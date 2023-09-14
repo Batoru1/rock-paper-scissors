@@ -111,7 +111,7 @@ h1 {
   #rock img,
   #paper img,
   #scissors img {
-    width: 140px; /* width as needed for smaller screens */
+    width: 120px; /* width as needed for smaller screens */
   }
 
   h1 {
